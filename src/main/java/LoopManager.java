@@ -13,10 +13,10 @@ public class LoopManager {
             channelTypeStrIndex = getCTSIndex();
             Data data = new Data();
             data.setKeyword(Keyword.keyword[keywordIndex]);
-//            data.setUrl(Url.urlList[channelTypeStrIndex]);
-//            data.setChannelTypeStr(ChannelTypeStr.values()[channelTypeStrIndex]);
-            data.setUrl(Url.urlList[1]);
-            data.setChannelTypeStr(ChannelTypeStr.NAVERMAP);
+            data.setUrl(Url.urlList[channelTypeStrIndex]);
+            data.setChannelTypeStr(ChannelTypeStr.values()[channelTypeStrIndex]);
+//            data.setUrl(Url.urlList[1]);
+//            data.setChannelTypeStr(ChannelTypeStr.NAVERMAP);
             OneCycle oneCycle = new OneCycle(data);
             oneCycle.exeOneCycle();
 //            break;
