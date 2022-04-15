@@ -22,13 +22,17 @@ public class FetchNaver extends FetchBase{
     public void exe(){
         try{
             System.out.println("getPage : "+ super.data.getUrl());
+            System.out.println("getkeyword : "+ super.data.getKeyword());
             //네이버 키기
             super.getPage(super.data.getUrl());
             //검색하기
             super.putAndSend(super.data.getKeyword(),"#query","#search_btn");
             //네이버 플레이스 있는지 없는지 확인하기
             if(super.isSelector("#place-app-root")){
-                int pageCnt = Integer.parseInt(super.webDriver.findElement(By.cssSelector("div.cmm_pgs._2u3bt > span")).getText().split("\n")[3]);
+                int pageCnt=1;
+                if(super.isSelector("div.cmm_pgs._2u3bt > span")){
+                    pageCnt = Integer.parseInt(super.webDriver.findElement(By.cssSelector("div.cmm_pgs._2u3bt > span")).getText().split("\n")[3]);
+                }
                 l: for(int i=0;i<pageCnt; i++){
                     WebElement webElement = super.webDriver.findElement(By.cssSelector("#place-app-root"));
                     List<WebElement> placeOneBlock = webElement.findElements(By.cssSelector("._22p-O.m29At"));
@@ -50,7 +54,9 @@ public class FetchNaver extends FetchBase{
                             }
                         }
                     }
-                    super.clickPage("a.spnew_bf.cmm_pg_next.on");
+                    if(super.isSelector("div.cmm_pgs._2u3bt > span")){
+                        super.clickPage("a.spnew_bf.cmm_pg_next.on");
+                    }
                 }
             }else{
                 System.out.println("    네이버 플레이스 없음");
@@ -58,7 +64,7 @@ public class FetchNaver extends FetchBase{
             super.crashPage();
         }catch (Exception e){
             System.out.println("ERROR!");
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            e.printStackTrace();
         }
     }
 }

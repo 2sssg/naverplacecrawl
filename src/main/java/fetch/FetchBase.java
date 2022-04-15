@@ -15,6 +15,7 @@ public class FetchBase {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
+        options.addArguments("--headless");
         webDriver = new ChromeDriver(options);
     }
 

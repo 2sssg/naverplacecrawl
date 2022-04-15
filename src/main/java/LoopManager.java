@@ -9,6 +9,7 @@ public class LoopManager {
         int keywordIndex,channelTypeStrIndex;
         while(true){
             System.out.println("Loop Start");
+            StartCrawl.execute("kill -9 $(pgrep -f Chrome)");
             keywordIndex = getKeywordIndex();
             channelTypeStrIndex = getCTSIndex();
             Data data = new Data();
