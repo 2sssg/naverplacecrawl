@@ -14,7 +14,6 @@ public class StartCrawl {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
         LoopManager loopManager = new LoopManager();
         loopManager.crawlLoop();
-//        StartCrawl.execute("ki ll -9 $(pgrep -f chrome)");
     }
 
 
