@@ -25,8 +25,10 @@ public class FetchNaver extends FetchBase{
             System.out.println("getkeyword : "+ super.data.getKeyword());
             //네이버 키기
             super.getPage(super.data.getUrl());
+            System.out.println();
             //검색하기
             super.putAndSend(super.data.getKeyword(),"#query","#search_btn");
+            System.out.println(super.webDriver.getCurrentUrl());
             //네이버 플레이스 있는지 없는지 확인하기
             if(super.isSelector("#place-app-root")){
                 int pageCnt=1;
@@ -46,6 +48,7 @@ public class FetchNaver extends FetchBase{
                                 Thread.sleep(10000);
                                 super.webDriver = super.webDriver.switchTo().window(tabs.get(1));
                                 Thread.sleep(10000);
+                                System.out.println(super.webDriver.getCurrentUrl());
                                 super.closePage();
                                 super.webDriver = super.webDriver.switchTo().window(tabs.get(0));
                                 break l;
